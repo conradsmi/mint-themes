@@ -2,15 +2,8 @@
 import os
 
 from constants import X_HEX_ACCENTS, X_RGB_ACCENTS, x_hex_colors, x_rgb_colors
-from constants import Y_HEX_ACCENT1, Y_HEX_ACCENT2, Y_HEX_ACCENT3, Y_HEX_ACCENT4
-from constants import y_hex_colors1, y_hex_colors2, y_hex_colors3, y_hex_colors4
-
-def change_value (key, value, file):
-    if value is not None:
-        command = "sed -i '/%(key)s=/c\%(key)s=%(value)s' %(file)s" % {'key':key, 'value':value, 'file':file}
-    else:
-        command = "sed -i '/%(key)s=/d' %(file)s" % {'key':key, 'file':file}
-    os.system(command)
+from constants import Y_HEX_ACCENT1, Y_HEX_ACCENT2
+from constants import y_hex_colors1, y_hex_colors2
 
 def x_colorize_directory (path, variation):
     for accent in X_HEX_ACCENTS:
@@ -23,10 +16,6 @@ def y_colorize_directory (path, variation):
         os.system("find %s -name '*.*' -type f -exec sed -i 's/%s/%s/gI' {}  \\;" % (path, accent, y_hex_colors1[variation]))
     for accent in Y_HEX_ACCENT2:
         os.system("find %s -name '*.*' -type f -exec sed -i 's/%s/%s/gI' {}  \\;" % (path, accent, y_hex_colors2[variation]))
-    for accent in Y_HEX_ACCENT3:
-        os.system("find %s -name '*.*' -type f -exec sed -i 's/%s/%s/gI' {}  \\;" % (path, accent, y_hex_colors3[variation]))
-    for accent in Y_HEX_ACCENT4:
-        os.system("find %s -name '*.*' -type f -exec sed -i 's/%s/%s/gI' {}  \\;" % (path, accent, y_hex_colors4[variation]))
 
 if os.path.exists("usr"):
     os.system("rm -rf usr/")
@@ -56,13 +45,8 @@ for color in os.listdir("src/Mint-X/variations"):
     path = os.path.join("src/Mint-X/variations", color)
     if os.path.isdir(path):
         theme = "usr/share/themes/Mint-X-%s" % color
-        theme_index = os.path.join(theme, "index.theme")
         os.system("cp -R usr/share/themes/Mint-X %s" % theme)
         os.system("cp -R src/Mint-X/variations/%s/* %s/" % (color, theme))
-
-        # Theme name
-        for key in ["Name", "GtkTheme", "IconTheme"]:
-            change_value(key, "Mint-X-%s" % color, theme_index)
 
         # Accent color
         gtkrc = os.path.join(theme, "gtk-2.0", "gtkrc")
@@ -122,15 +106,7 @@ for color in y_hex_colors1.keys():
 
             # Copy theme
             theme = "usr/share/themes/%s-%s" % (original_name, color)
-            theme_index = os.path.join(theme, "index.theme")
             os.system("cp -R usr/share/themes/%s %s" % (original_name, theme))
-
-            # Theme name
-            for key in ["Name", "GtkTheme"]:
-                change_value(key, "%s-%s" % (original_name, color), theme_index)
-
-            for key in ["IconTheme"]:
-                change_value(key, "%s-%s" % (original_name, color), theme_index)
 
             # Regenerate GTK4 sass
             os.system("cp -R src/Mint-Y/gtk-4.0/sass %s/gtk-4.0/" % theme)
@@ -140,6 +116,8 @@ for color in y_hex_colors1.keys():
             if (variant == "-Dark"):
                 os.system("cp sass/gtk-dark.scss sass/gtk.scss")
                 os.system("sassc ./sass/gtk.scss gtk.css")
+                # Add a gtk-dark.css (this is needed by libhandy/libadwaita apps when prefer-dark is on)
+                os.system("sassc ./sass/gtk-dark.scss gtk-dark.css")
             else:
                 os.system("sassc ./sass/gtk-dark.scss gtk-dark.css")
                 os.system("sassc ./sass/gtk.scss gtk.css")
@@ -156,6 +134,8 @@ for color in y_hex_colors1.keys():
             if (variant == "-Dark"):
                 os.system("cp sass/gtk-dark.scss sass/gtk.scss")
                 os.system("sassc ./sass/gtk.scss gtk.css")
+                # Add a gtk-dark.css (this is needed by libhandy/libadwaita apps when prefer-dark is on)
+                os.system("sassc ./sass/gtk-dark.scss gtk-dark.css")
             else:
                 os.system("sassc ./sass/gtk-dark.scss gtk-dark.css")
                 os.system("sassc ./sass/gtk.scss gtk.css")
@@ -186,10 +166,6 @@ for color in y_hex_colors1.keys():
                         os.system("sed -i s'/%(accent)s/%(color_accent)s/gI' %(file)s" % {'accent': accent, 'color_accent': y_hex_colors1[color], 'file': file})
                     for accent in Y_HEX_ACCENT2:
                         os.system("sed -i s'/%(accent)s/%(color_accent)s/gI' %(file)s" % {'accent': accent, 'color_accent': y_hex_colors2[color], 'file': file})
-                    for accent in Y_HEX_ACCENT3:
-                        os.system("sed -i s'/%(accent)s/%(color_accent)s/gI' %(file)s" % {'accent': accent, 'color_accent': y_hex_colors3[color], 'file': file})
-                    for accent in Y_HEX_ACCENT4:
-                        os.system("sed -i s'/%(accent)s/%(color_accent)s/gI' %(file)s" % {'accent': accent, 'color_accent': y_hex_colors4[color], 'file': file})
 
             # Remove metacity-theme-3.xml (it doesn't need to be derived since it's using GTK colors, and Cinnamon doesn't want to list it)
             os.system("rm -f %s" % os.path.join(theme, "metacity-1", "metacity-theme-3.xml"))

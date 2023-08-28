@@ -1,3 +1,132 @@
+mint-themes (2.1.5) victoria; urgency=medium
+
+  [ Michael Webster ]
+  * Revert "cinnamon: Reduce the minimum width of PopupSliderMenuItem."
+
+ -- Clement Lefebvre <root@linuxmint.com>  Fri, 07 Jul 2023 15:30:32 +0200
+
+mint-themes (2.1.4) victoria; urgency=medium
+
+  [ Michael Webster ]
+  * cinnamon: Reduce the minimum width of PopupSliderMenuItem.
+
+  [ Clement Lefebvre ]
+  * Mint-Y: Add gtk-dark.css to Dark theme
+
+ -- Clement Lefebvre <root@linuxmint.com>  Thu, 29 Jun 2023 16:32:06 +0200
+
+mint-themes (2.1.3) victoria; urgency=medium
+
+  [ Michael Webster ]
+  * Mint-X: Fix index.theme for color variants.
+
+ -- Clement Lefebvre <root@linuxmint.com>  Mon, 26 Jun 2023 11:15:09 +0200
+
+mint-themes (2.1.2) victoria; urgency=medium
+
+  * Revert accent notifications
+  * Give notifications an accent top border
+
+ -- Clement Lefebvre <root@linuxmint.com>  Wed, 14 Jun 2023 09:12:18 +0200
+
+mint-themes (2.1.1) victoria; urgency=medium
+
+  * cinnamon: Use accent colors for buttons inside notifications
+
+ -- Clement Lefebvre <root@linuxmint.com>  Thu, 08 Jun 2023 13:59:39 +0100
+
+mint-themes (2.1.0) victoria; urgency=medium
+
+  [ Georg ]
+  * Fix for title bar buttons on unfocused windows (#410)
+
+  [ Clement Lefebvre ]
+  * Mint-Y: Don't generate index.theme files
+
+  [ Michael Webster ]
+  * Commit some compiled changes.
+
+  [ Rick Calixte ]
+  * .gitignore: Ignore build and cache files (#437)
+
+  [ fredcw ]
+  * Mint-Y Cinnamon theme - sound applet - use ems instead of px for overlay. (#434)
+  * Mint-X cinnamon theme - sound applet. Use ems instead of px for overlay height. (#435)
+  * Mint-Y cinnamon - Add support for .menu-category-button:hover (#433)
+
+  [ JosephMcc ]
+  * Gtk3: Fix setting the infobar background color (#440)
+
+  [ Clement Lefebvre ]
+  * Mint-Y: Remove brown theme
+  * GTK3: Use accent color for tooltips
+  * Cinnamon: Use accent color for notifications
+  * Cinnamon: Use accent colors for tooltips/badge
+  * Cinnamon tooltips: add margins
+  * GTK4: Use accent color for tooltips
+  * GTK2: Use accent color for tooltips
+
+  [ Georg Sieber ]
+  * fix selection on unfocused windows (#445)
+  * Adjust Title Bar Padding (#444)
+
+  [ Clement Lefebvre ]
+  * Generate CSS files
+
+ -- Clement Lefebvre <root@linuxmint.com>  Tue, 06 Jun 2023 13:10:30 +0100
+
+mint-themes (2.0.9) vera; urgency=medium
+
+  * slick-greeter: Set the entry white
+
+ -- Clement Lefebvre <root@linuxmint.com>  Tue, 17 Jan 2023 10:58:38 +0000
+
+mint-themes (2.0.8) vera; urgency=medium
+
+  [ Georg ]
+  * fix header bar size, e.g. for disk tool (#411)
+
+  [ Michael Webster ]
+  * Fix corner bar - only highlight the bar, not the applet, give it its own colors, fix the separator applet under the light theme.
+  * Fix GtkScale value position and mark length.
+  * Mint-X - gtk3: Restore :disabled state to infobar buttons.
+
+ -- Clement Lefebvre <root@linuxmint.com>  Tue, 13 Dec 2022 11:30:34 +0000
+
+mint-themes (2.0.7) vera; urgency=medium
+
+  [ Michael Webster ]
+  * Cinnamon: Add support for the cornerbar applet.
+  * Cinnamon: Don't use the accent color for the panel-launcher hover state.
+
+ -- Clement Lefebvre <root@linuxmint.com>  Mon, 28 Nov 2022 11:00:28 +0000
+
+mint-themes (2.0.6) vera; urgency=medium
+
+  [ Sébastien Bouchard ]
+  * GTK-4 directory and assets added in update-variations.py script (#401)
+
+  [ Clement Lefebvre ]
+  * Remove Mint-Y-Colors directory
+  * Remove hardcoded hover and pressed colors
+  * Rebuild generated files
+  * Soften light Cinnamon colors
+  * Remove accents in parts of the Cinnamon theme
+  * Generate CSS
+  * Update Pink
+  * Update Aqua, Orange, Purple, Red, Sand, Teal
+  * Update Blue and Grey
+  * Update Green
+  * Update Gtk3 thumbnails
+  * Update dark Gtk3 thumbnails
+  * Gtk2: Remove menubar-toolbar asset overrides
+  * Update Cinnamon thumbnails
+  * Mint-X: Update Cinnamon thumbnails
+  * Linux Mint: Update cinnamon thumbnail
+  * Update Gtk3 thumbnails
+
+ -- Clement Lefebvre <root@linuxmint.com>  Thu, 24 Nov 2022 22:43:50 +0000
+
 mint-themes (2.0.5) vanessa; urgency=medium
 
   [ JosephMcc ]

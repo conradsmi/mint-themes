@@ -11,7 +11,7 @@ style "default" {
   GtkToolbar::internal-padding = 4
   GtkToolButton::icon-spacing = 4
 
-  GtkWidget::tooltip-radius = 2
+  GtkWidget::tooltip-radius = 5
   GtkWidget::tooltip-alpha = 235
   GtkWidget::new-tooltip-style = 1 #for compatibility
 
@@ -952,7 +952,6 @@ style "entry" {
   ythickness = 4
 
   base[NORMAL] = @base_color
-  base[ACTIVE] = @base_color
   base[INSENSITIVE] = @insensitive_bg_color
 
   engine "pixmap" {
@@ -982,6 +981,15 @@ style "entry" {
       file = "assets/entry-border-active-bg-solid.png"
       border = { 6, 6, 6, 6 }
       stretch = TRUE
+    }
+
+    image {
+      function = FLAT_BOX
+      detail = "entry_bg"
+      state = ACTIVE
+      overlay_file = "assets/null.png"
+      overlay_border = { 0, 0, 0, 0 }
+      overlay_stretch = TRUE
     }
   }
 }
@@ -2242,9 +2250,9 @@ style "eclipse-tooltips" {
   xthickness = 8
   ythickness = 4
 
-  bg[NORMAL] = shade(1.05, @bg_color)
-  fg[NORMAL] = @text_color
-  bg[SELECTED] = shade(1.05, @bg_color)
+  bg[NORMAL] = @tooltip_bg_color
+  fg[NORMAL] = @tooltip_fg_color
+  bg[SELECTED] = @tooltip_bg_color
 
 }
 

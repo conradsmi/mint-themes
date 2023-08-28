@@ -2,8 +2,8 @@
 import os
 import sys
 
-from constants import Y_HEX_ACCENT1, Y_HEX_ACCENT2, Y_HEX_ACCENT3, Y_HEX_ACCENT4
-from constants import y_hex_colors1, y_hex_colors2, y_hex_colors3, y_hex_colors4
+from constants import Y_HEX_ACCENT1, Y_HEX_ACCENT2
+from constants import y_hex_colors1, y_hex_colors2
 
 def change_value (key, value, file):
     if value is not None:
@@ -14,7 +14,7 @@ def change_value (key, value, file):
 
 def usage ():
     print ("Usage: update-variations.py color")
-    print ("color can be 'Aqua', 'Blue', 'Brown', 'Grey', 'Orange', 'Pink', 'Purple', 'Red', 'Sand', 'Teal' or 'All'.")
+    print ("color can be 'Aqua', 'Blue', 'Grey', 'Orange', 'Pink', 'Purple', 'Red', 'Sand', 'Teal' or 'All'.")
     sys.exit(1)
 
 def update_color (color):
@@ -65,10 +65,6 @@ def update_color (color):
             os.system("sed -i s'/%(accent)s/%(color_accent)s/gI' %(file)s" % {'accent': accent, 'color_accent': y_hex_colors1[color], 'file': asset_path})
         for accent in Y_HEX_ACCENT2:
             os.system("sed -i s'/%(accent)s/%(color_accent)s/gI' %(file)s" % {'accent': accent, 'color_accent': y_hex_colors2[color], 'file': asset_path})
-        for accent in Y_HEX_ACCENT3:
-            os.system("sed -i s'/%(accent)s/%(color_accent)s/gI' %(file)s" % {'accent': accent, 'color_accent': y_hex_colors3[color], 'file': asset_path})
-        for accent in Y_HEX_ACCENT4:
-            os.system("sed -i s'/%(accent)s/%(color_accent)s/gI' %(file)s" % {'accent': accent, 'color_accent': y_hex_colors4[color], 'file': asset_path})
 
     # Render assets
     os.chdir(variation)
@@ -95,7 +91,7 @@ if len(sys.argv) < 2:
     usage()
 else:
     color_variation = sys.argv[1]
-    if not color_variation in ["Aqua", "Blue", "Brown", "Grey", "Orange", "Pink", "Purple", "Red", "Sand", "Teal", "All"]:
+    if not color_variation in ["Aqua", "Blue", "Grey", "Orange", "Pink", "Purple", "Red", "Sand", "Teal", "All"]:
         usage()
 
 # Mint-Y variations

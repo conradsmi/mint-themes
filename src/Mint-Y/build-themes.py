@@ -62,7 +62,6 @@ if __name__ == '__main__':
         os.system("mkdir -p %s" % dest_folder)
         if variation == "Mint-Y":
             print("    Building Mint-Y")
-            os.system("cp index.theme %s/" % dest_folder)
             # Gtk2
             version_folder = os.path.join(dest_folder, "gtk-2.0")
             os.system("mkdir -p %s" % version_folder)
@@ -99,7 +98,6 @@ if __name__ == '__main__':
 
         elif variation == "Mint-Y-Dark":
             print("    Building Mint-Y-Dark")
-            os.system("cp index.theme-dark %s" % os.path.join(dest_folder, "index.theme"))
             # Gtk2
             version_folder = os.path.join(dest_folder, "gtk-2.0")
             os.system("mkdir -p %s" % version_folder)
@@ -114,12 +112,14 @@ if __name__ == '__main__':
             os.system("mkdir -p %s" % version_folder)
             os.system("cp -R gtk-3.0/assets %s" % version_folder)
             os.system("cp gtk-3.0/gtk-dark.css %s" % os.path.join(version_folder, "gtk.css"))
+            os.system("cp gtk-3.0/gtk-dark.css %s" % os.path.join(version_folder, "gtk-dark.css"))
             os.system("cp gtk-3.0/thumbnail-dark.png %s" % os.path.join(version_folder, "thumbnail.png"))
             # Gtk4
             version_folder = os.path.join(dest_folder, "gtk-4.0")
             os.system("mkdir -p %s" % version_folder)
             os.system("cp -R gtk-4.0/assets %s" % version_folder)
             os.system("cp gtk-4.0/gtk-dark.css %s" % os.path.join(version_folder, "gtk.css"))
+            os.system("cp gtk-4.0/gtk-dark.css %s" % os.path.join(version_folder, "gtk-dark.css"))
             # Cinnamon
             version_folder = os.path.join(dest_folder, "cinnamon")
             os.system("mkdir -p %s" % version_folder)

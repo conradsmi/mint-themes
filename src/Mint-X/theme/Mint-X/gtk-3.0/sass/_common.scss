@@ -3505,7 +3505,7 @@ paned {
 infobar {
   border-style: none;
 
-  &.info {
+  &.info > revealer > box {
     background-color: $info_color;
 
     &.action:hover > revealer > box { background-color: darken($info_color, 5%); }
@@ -3520,11 +3520,18 @@ infobar {
       &:active,
       &:checked { @include button(active, $info_color, $fg_color, none); }
 
+      &:disabled {
+        @include button(insensitive, $info_color, $fg_color, none);
+
+        &:active,
+        &:checked { @include button(insensitive-active, $info_color, $fg_color, none); }
+      }
+
       &.flat { @include button(undecorated); }
     }
   }
 
-  &.question {
+  &.question > revealer > box {
     background-color: $question_color;
 
     &.action:hover > revealer > box { background-color: darken($question_color, 5%); }
@@ -3539,11 +3546,18 @@ infobar {
       &:active,
       &:checked { @include button(active, $question_color, $fg_color, none); }
 
+      &:disabled {
+        @include button(insensitive, $question_color, $fg_color, none);
+
+        &:active,
+        &:checked { @include button(insensitive-active, $question_color, $fg_color, none); }
+      }
+
       &.flat { @include button(undecorated); }
     }
   }
 
-  &.warning {
+  &.warning > revealer > box {
     background-color: $warning_color;
     color: $selected_fg_color;
 
@@ -3559,11 +3573,18 @@ infobar {
       &:active,
       &:checked { @include button(active, $warning_color, $selected_fg_color, none); }
 
+      &:disabled {
+        @include button(insensitive, $warning_color, $fg_color, none);
+
+        &:active,
+        &:checked { @include button(insensitive-active, $warning_color, $fg_color, none); }
+      }
+
       &.flat { @include button(undecorated); }
     }
   }
 
-  &.error {
+  &.error > revealer > box {
     background-color: $error_color;
     color: $selected_fg_color;
 
@@ -3578,6 +3599,13 @@ infobar {
       &.flat:active,
       &:active,
       &:checked { @include button(active, $error_color, $selected_fg_color, none); }
+
+      &:disabled {
+        @include button(insensitive, $error_color, $fg_color, none);
+
+        &:active,
+        &:checked { @include button(insensitive-active, $error_color, $fg_color, none); }
+      }
 
       &.flat { @include button(undecorated); }
     }
